@@ -17,14 +17,14 @@ public class Customer extends BaseEntity{
     @OneToMany(mappedBy = "customer")
     private final List<Address> addresses = new ArrayList<>();
 
-    /*
-    TODO:
-    Addresses[]
-    Shoppingcard
-    Orders[]
-    Ratings[]
-     */
+    @OneToMany(mappedBy = "customer")
+    private final List<Rating> ratings = new ArrayList<>();
 
+    @OneToOne(mappedBy = "customer")
+    private Shoppingcard shoppingcard;
+
+    @OneToMany(mappedBy = "customer")
+    private final List<Order> orders = new ArrayList<>();
 
     public Customer(String prename, String surname, String email) {
         this.prename = prename;
@@ -64,5 +64,23 @@ public class Customer extends BaseEntity{
     public void addAddress(Address address) {
         addresses.add(address);
         address.setCustomer(this);
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void addRating(Rating rating) {
+        ratings.add(rating);
+        rating.setCustomer(this);
+    }
+
+
+    public Shoppingcard getShoppingcard() {
+        return shoppingcard;
+    }
+
+    public void setShoppingcard(Shoppingcard shoppingcard) {
+        this.shoppingcard = shoppingcard;
     }
 }

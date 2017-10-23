@@ -18,6 +18,10 @@ public class Address extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Customer customer;
 
+    @OneToMany(mappedBy = "address")
+    private final List<Order> orders = new ArrayList<>();
+
+
     public Address(String street, String number, String city, String postalCode) {
         this.street = street;
         this.number = number;
@@ -65,6 +69,14 @@ public class Address extends BaseEntity {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder (Order order) {
+        orders.add(order);
     }
 }
 

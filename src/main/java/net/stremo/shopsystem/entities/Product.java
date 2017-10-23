@@ -18,12 +18,15 @@ public class Product extends BaseEntity{
     @ManyToMany(fetch = FetchType.EAGER)
     private final List<Category> categories = new ArrayList<>();
 
-    /*
-     * TODO's:
-     * reatings,
-     * categories
-     */
+    @OneToMany(mappedBy = "product")
+    private final List<Rating> ratings = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "product")
+    private final List<ShoppingcardElement> shoppingcardElements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    private final List<OrderItem> orderElements = new ArrayList<>();
 
     public Product(String name, Float price, int deliveryTime, String description) {
         this.name = name;
@@ -71,4 +74,21 @@ public class Product extends BaseEntity{
     public void addCategory (Category category) {
         this.categories.add(category);
     }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void addRating (Rating rating) {
+        ratings.add(rating);
+    }
+
+    public List<ShoppingcardElement> getShoppingcardElements() {
+        return shoppingcardElements;
+    }
+
+    public void addShoppingcardElement (ShoppingcardElement shoppingcardElement) {
+        shoppingcardElements.add(shoppingcardElement);
+    }
+
 }

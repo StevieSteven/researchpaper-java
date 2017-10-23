@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Random;
 
 @Service
@@ -18,12 +19,29 @@ public class TestDataSetup {
     @Autowired
     CustomerRepository customerRepository;
 
-
     @Autowired
     CategoryRepository categoryRepository;
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    RatingReposistory ratingReposistory;
+
+    @Autowired
+    ShoppingcardRepository shoppingcardRepository;
+
+    @Autowired
+    ShoppingcardElementRepository shoppingcardElementRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
+
+    @Autowired
+    OrderItemRepository orderItemRepository;
+
+    @Autowired
+    OrderStatusRepository orderStatusRepository;
 
 
     @Transactional
@@ -31,9 +49,9 @@ public class TestDataSetup {
         System.out.println("Create TestData");
 
         Faker faker = new Faker();
-
+        Random r = new Random();
         int step = 1;
-        int numberOfUser = 20;
+        int numberOfUser = 40;
         int numberOfProducts = 200;
 
         System.out.println(step + ". Create Customer. Number: " + numberOfUser);
@@ -52,6 +70,16 @@ public class TestDataSetup {
         }
 
         step++;
+
+        System.out.println(step + ". create order status");
+        orderStatusRepository.save(new OrderStatus("bestellt"));
+        orderStatusRepository.save(new OrderStatus("verpackt"));
+        orderStatusRepository.save(new OrderStatus("versendet"));
+        orderStatusRepository.save(new OrderStatus("geliefert"));
+        orderStatusRepository.save(new OrderStatus("abgeschlossen"));
+
+        step++;
+
 
         System.out.println(step + ". Create Categories.");
 
@@ -72,7 +100,7 @@ public class TestDataSetup {
 
         step++;
 
-        System.out.println(step + ". create products. Number of Products: different of each category");
+        System.out.println(step + ". create products. Number of Products: different of each category. Sum: 5600");
 
         this.createProducts(800, cHome);
         this.createProducts(4000, cTechnic);
@@ -81,7 +109,75 @@ public class TestDataSetup {
         this.createProducts(100, cSerie);
 
 
+        step++;
 
+        System.out.print(step +": Create Ratings... ");
+        final int[] ratingCounter = {0};
+        customerRepository.findAll().forEach(customer -> {
+            int upperBound = r.nextInt(50);
+            for (int i = 0; i < upperBound; i++) {
+                Long id = r.nextLong();
+                if (id < 0) {
+                    id = id *-1;
+                }
+                id = id % productRepository.count();
+                Product p = productRepository.findOne(id);
+                Rating rating = new Rating(r.nextInt(5), faker.lorem().sentence(), customer, p);
+                ratingReposistory.save(rating);
+//                customer.addRating(rating);
+                ratingCounter[0]++;
+            }
+        });
+
+        System.out.println(ratingCounter[0] + " Ratings in sum.");
+
+        step++;
+
+
+        System.out.println(step + ": Create shoppingCards for every second user. Fill products with 1 to 10 items.");
+
+        int cardCounter = 0;
+        for (int i = 1; i < customerRepository.count()-1; i = i+2) {
+            Customer customer = customerRepository.findOne((long) i);
+
+            Shoppingcard card = new Shoppingcard(customer);
+            shoppingcardRepository.save(card);
+
+            int upperBound = r.nextInt(10);
+            for (int j = 0; j < upperBound; j++) {
+                Long id = r.nextLong();
+                if (id < 0) {
+                    id = id *-1;
+                }
+                id = id % productRepository.count();
+                Product p = productRepository.findOne(id);
+                ShoppingcardElement element = new ShoppingcardElement(r.nextInt(20), card, p);
+                shoppingcardElementRepository.save(element);
+                cardCounter++;
+            }
+
+        }
+        System.out.println("\t" +  cardCounter + " products filled into shopping cards.");
+
+        step++;
+
+        System.out.println(step + " create orders. every order has 1 to 10 products. A Customer has 0 to 20 orders in History");
+
+//
+//        customerRepository.findAll().forEach(customer -> {
+//            int upperBound = r.nextInt(20);
+//
+//            for (int i = 0; i < upperBound; i++) {
+//                Address a = customer.getAddresses().get(r.nextInt(customer.getAddresses().size()));
+//                Order order = new Order(faker.date().between(new Date(01,01,2000), new Date(31,10,2017)).toString() ,addressRepository, ord);
+//
+//                int quantityItems = r.nextInt(10);
+//            }
+//
+//        });
+
+
+        System.out.println("Dummy data is created successfully.");
     }
 
 
