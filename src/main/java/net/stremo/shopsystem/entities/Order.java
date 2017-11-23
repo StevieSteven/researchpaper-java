@@ -24,6 +24,7 @@ public class Order extends BaseEntity{
     private final List<OrderItem> items = new ArrayList<>();
 
     public Order(Address address, OrderStatus status, Customer customer) {
+        this.date = "1970-01-01 00:00";
         this.address = address;
         this.status = status;
         this.customer = customer;
@@ -70,5 +71,15 @@ public class Order extends BaseEntity{
 
     public List<OrderItem> getItems() {
         return items;
+    }
+
+    public void addProduct(Product productInOrder, int i) {
+        OrderItem o = new OrderItem(i, this, productInOrder);
+        items.add(o);
+
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        items.add(orderItem);
     }
 }
