@@ -18,6 +18,10 @@ public class Rating extends BaseEntity {
     private Product product;
 
 
+    public Rating () {
+
+    }
+
     public Rating(int stars, String comment, Customer customer, Product product) {
         this.stars = stars;
         this.comment = comment;

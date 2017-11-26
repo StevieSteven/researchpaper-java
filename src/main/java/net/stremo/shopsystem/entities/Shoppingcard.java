@@ -15,6 +15,10 @@ public class Shoppingcard extends BaseEntity {
     @OneToMany(mappedBy = "shoppingcard")
     private final List<ShoppingcardElement> products = new ArrayList<>();
 
+    public Shoppingcard () {
+
+    }
+
     public Shoppingcard(Customer customer) {
         this.customer = customer;
     }

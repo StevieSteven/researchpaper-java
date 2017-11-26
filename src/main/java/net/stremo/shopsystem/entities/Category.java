@@ -17,6 +17,10 @@ public class Category extends BaseEntity {
 //    @ManyToMany //(mappedBy = "products")
 //    private final List<Product> products = new ArrayList<>();
 
+    public Category () {
+
+    }
+
 
     public Category(String name) {
         this.name = name;

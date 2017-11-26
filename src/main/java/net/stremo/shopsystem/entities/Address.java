@@ -22,6 +22,9 @@ public class Address extends BaseEntity {
     private final List<Order> orders = new ArrayList<>();
 
 
+    public Address() {
+    }
+
     public Address(String street, String number, String city, String postalCode) {
         this.street = street;
         this.number = number;

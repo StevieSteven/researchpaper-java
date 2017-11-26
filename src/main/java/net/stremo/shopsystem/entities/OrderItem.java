@@ -17,6 +17,9 @@ public class OrderItem extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Product product;
 
+    public OrderItem () {
+
+    }
 
     public OrderItem(int quantity, Order order, Product product) {
         this.quantity = quantity;

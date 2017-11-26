@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-public class Customer extends BaseEntity{
+public class Customer extends BaseEntity {
 
 
     private String prename;
     private String surname;
     private String email;
 
-//    @OneToMany(fetch = FetchType.EAGER)
+    //    @OneToMany(fetch = FetchType.EAGER)
     @OneToMany(mappedBy = "customer")
     private final List<Address> addresses = new ArrayList<>();
 
@@ -25,6 +25,11 @@ public class Customer extends BaseEntity{
 
     @OneToMany(mappedBy = "customer")
     private final List<Order> orders = new ArrayList<>();
+
+
+    public Customer() {
+
+    }
 
     public Customer(String prename, String surname, String email) {
         this.prename = prename;
@@ -82,5 +87,14 @@ public class Customer extends BaseEntity{
 
     public void setShoppingcard(Shoppingcard shoppingcard) {
         this.shoppingcard = shoppingcard;
+    }
+
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 }

@@ -28,6 +28,10 @@ public class Product extends BaseEntity{
     @OneToMany(mappedBy = "product")
     private final List<OrderItem> orderElements = new ArrayList<>();
 
+    public Product () {
+
+    }
+
     public Product(String name, Float price, int deliveryTime, String description) {
         this.name = name;
         this.price = price;

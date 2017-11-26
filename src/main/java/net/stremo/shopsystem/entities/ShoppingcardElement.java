@@ -15,6 +15,10 @@ public class ShoppingcardElement extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private Product product;
 
+    public ShoppingcardElement() {
+
+    }
+
 
     public ShoppingcardElement(int quantity, Shoppingcard shoppingcard, Product product) {
         this.quantity = quantity;

@@ -13,6 +13,10 @@ public class OrderStatus extends BaseEntity {
     @OneToOne(mappedBy = "status")
     private Order order;
 
+    public OrderStatus () {
+
+    }
+
     public OrderStatus(String message) {
         this.message = message;
     }
