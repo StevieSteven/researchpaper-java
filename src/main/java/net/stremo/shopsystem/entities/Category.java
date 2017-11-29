@@ -14,8 +14,12 @@ public class Category extends BaseEntity {
     @OneToOne(fetch= FetchType.EAGER)
     private Category parent;
 
-//    @ManyToMany //(mappedBy = "products")
-//    private final List<Product> products = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name="products_categories",
+            joinColumns=@JoinColumn(name="categories_id", referencedColumnName="ID"),
+            inverseJoinColumns=@JoinColumn(name="product_id", referencedColumnName="ID"))
+    private final List<Product> products = new ArrayList<>();
 
     public Category () {
 
@@ -48,4 +52,14 @@ public class Category extends BaseEntity {
     public void setParent(Category parent) {
         this.parent = parent;
     }
+
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
 }

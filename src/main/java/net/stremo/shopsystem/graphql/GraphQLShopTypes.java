@@ -63,7 +63,6 @@ public class GraphQLShopTypes {
                         .name("postalCode")
                         .type(GraphQLString)
                         .build())
-
                 .build();
     }
 
@@ -103,7 +102,7 @@ public class GraphQLShopTypes {
                 .build();
     }
 
-    private static GraphQLObjectType createProductType() {
+    protected static GraphQLObjectType createProductType() {
         return newObject()
                 .name("Product")
                 .field(newFieldDefinition()
@@ -125,6 +124,10 @@ public class GraphQLShopTypes {
                 .field(newFieldDefinition()
                         .name("description")
                         .type(GraphQLString)
+                        .build())
+                .field(newFieldDefinition()
+                        .name("categories")
+                        .type(new GraphQLList(new GraphQLTypeReference("Category")))
                         .build())
                 .build();
     }

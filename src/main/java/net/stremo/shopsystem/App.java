@@ -9,20 +9,16 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class App {
 
-
     @Autowired
     private TestDataSetup testDataSetup;
-
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
 
-
     @PostConstruct
     public void createTestData() {
-        testDataSetup.run();
+//        testDataSetup.run();
     }
-
 
 }

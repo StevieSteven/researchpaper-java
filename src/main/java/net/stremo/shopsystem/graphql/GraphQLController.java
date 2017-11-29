@@ -75,6 +75,9 @@ public class GraphQLController {
         System.out.println("A little Test: ");
         System.out.println(productRepository.count() + " Produkte vorhanden");
 
+        System.out.println("Order Test: ");
+        System.out.println(orderRepository.count());
+
         String query = (String) body.get("query");
         Map<String, Object> variables = (Map<String, Object>) body.get("variables");
         ExecutionResult executionResult = graphql.execute(query, (Object) null, variables);

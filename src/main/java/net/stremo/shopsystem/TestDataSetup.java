@@ -141,20 +141,24 @@ public class TestDataSetup {
         for (int i = 1; i < customerRepository.count() - 1; i = i + 2) {
             Customer customer = customerRepository.findOne((long) i);
 
-            Shoppingcard card = new Shoppingcard(customer);
-            shoppingcardRepository.save(card);
+            if(customer.getShoppingcard() == null) {
 
-            int upperBound = r.nextInt(10);
-            for (int j = 0; j < upperBound; j++) {
-                Long id = r.nextLong();
-                if (id < 0) {
-                    id = id * -1;
+                Shoppingcard card = new Shoppingcard(customer);
+                shoppingcardRepository.save(card);
+
+                int upperBound = r.nextInt(10);
+                for (int j = 0; j < upperBound; j++) {
+                    Long id = r.nextLong();
+                    if (id < 0) {
+                        id = id * -1;
+                    }
+                    id = id % productRepository.count();
+                    Product p = productRepository.findOne(id);
+                    ShoppingcardElement element = new ShoppingcardElement(r.nextInt(20), card, p);
+                    shoppingcardElementRepository.save(element);
+                    cardCounter++;
                 }
-                id = id % productRepository.count();
-                Product p = productRepository.findOne(id);
-                ShoppingcardElement element = new ShoppingcardElement(r.nextInt(20), card, p);
-                shoppingcardElementRepository.save(element);
-                cardCounter++;
+
             }
 
         }
@@ -165,19 +169,17 @@ public class TestDataSetup {
         System.out.println(step + " create orders. every order has 1 to 10 products. A Customer has 0 to 20 orders in History");
 
         customerRepository.findAll().forEach(customer -> {
-            int upperBound = r.nextInt(20);
+            int upperBound = r.nextInt(1);
             for (int i = 0; i < upperBound; i++) {
                 List<Address> addressList = customer.getAddresses();
                 if (addressList.size() == 0)
                     continue;
                 int addressIndex = r.nextInt(addressList.size());
                 Address a = addressList.get(addressIndex);
-                long orderStatusIndex = (long) r.nextInt((int) orderStatusRepository.count());
-                if (orderStatusIndex == 0)
-                    orderStatusIndex = 1;
-                orderStatusRepository.findOne(orderStatusIndex);
-                Order order = new Order(a, orderStatusRepository.findOne((long) r.nextInt((int) orderStatusRepository.count())), customer);
+                Order order = new Order(a, orderStatusRepository.findOne((long) r.nextInt((int) orderStatusRepository.count() - 1) + 1), customer);
                 orderRepository.save(order);
+//                customer.addOrder(order);
+                customer.setOrder(order);
                 int quantityItems = r.nextInt(10);
                 int numberOfProductsInStore = (int) productRepository.count();
                 for (int productIndex = 0; productIndex < quantityItems; productIndex++) {

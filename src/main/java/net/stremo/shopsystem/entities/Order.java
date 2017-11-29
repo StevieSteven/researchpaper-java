@@ -16,7 +16,7 @@ public class Order extends BaseEntity{
     @OneToOne(fetch = FetchType.EAGER)
     private OrderStatus status;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private Customer customer;
 
 
@@ -80,7 +80,6 @@ public class Order extends BaseEntity{
     public void addProduct(Product productInOrder, int i) {
         OrderItem o = new OrderItem(i, this, productInOrder);
         items.add(o);
-
     }
 
     public void addOrderItem(OrderItem orderItem) {

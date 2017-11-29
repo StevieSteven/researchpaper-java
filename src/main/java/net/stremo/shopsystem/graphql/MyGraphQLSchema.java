@@ -29,6 +29,7 @@ public class MyGraphQLSchema {
     private GraphQLObjectType todoType;
 
     private GraphQLObjectType customerType = createCustomerType();
+    private GraphQLObjectType categoryType = createCategoryType();
     private GraphQLObjectType addressType = GraphQLShopTypes.createAddressType();
 
     private GraphQLObjectType connectionFromUserToTodos;
@@ -60,8 +61,8 @@ public class MyGraphQLSchema {
         nodeInterface = relay.nodeInterface(typeResolverProxy);
         simpleConnection = new SimpleListConnection(todos);
 
-        createTodoType();
-        createConnectionFromUserToTodos();
+//        createTodoType();
+//        createConnectionFromUserToTodos();
 
 
         typeResolverProxy.setTypeResolver(object -> {
@@ -77,9 +78,20 @@ public class MyGraphQLSchema {
                         .argument(GraphQLArgument.newArgument().name("id").type(GraphQLID).build())
                         .dataFetcher(environment -> {
                             Long id = Long.parseLong(environment.getArgument("id"));
-                            Customer c = controller.customerRepository.findOne(id);
+                            return controller.customerRepository.findOne(id);
+                        })
+                        .build())
+                .field(newFieldDefinition()
+                        .name("Category")
+                        .type(new GraphQLList(categoryType))
+                        .argument(GraphQLArgument.newArgument().name("name").type(GraphQLString).build())
+                        .dataFetcher(environment -> {
 
-                            return c;
+                            if(environment.containsArgument("name")) {
+                                List<Category> categories = controller.categoryRepository.findByName(environment.getArgument("name").toString());
+                                return categories;
+                            }
+                            return controller.categoryRepository.findAll();
                         })
                         .build())
                 .build();
@@ -98,52 +110,52 @@ public class MyGraphQLSchema {
     }
 
 
-    private void createTodoType() {
-        todoType = newObject()
-                .name("Todo")
-                .field(newFieldDefinition()
-                        .name("id")
-                        .type(new GraphQLNonNull(GraphQLID))
-                        .dataFetcher(environment -> {
-                                    Todo todo = (Todo) environment.getSource();
-                                    return relay.toGlobalId("Todo", todo.getId());
-                                }
-                        )
-                        .build())
-                .field(newFieldDefinition()
-                        .name("text")
-                        .type(Scalars.GraphQLString)
-                        .build())
-                .field(newFieldDefinition()
-                        .name("complete")
-                        .type(Scalars.GraphQLBoolean)
-                        .build())
-                .withInterface(nodeInterface)
-                .build();
-    }
+//    private void createTodoType() {
+//        todoType = newObject()
+//                .name("Todo")
+//                .field(newFieldDefinition()
+//                        .name("id")
+//                        .type(new GraphQLNonNull(GraphQLID))
+//                        .dataFetcher(environment -> {
+//                                    Todo todo = (Todo) environment.getSource();
+//                                    return relay.toGlobalId("Todo", todo.getId());
+//                                }
+//                        )
+//                        .build())
+//                .field(newFieldDefinition()
+//                        .name("text")
+//                        .type(Scalars.GraphQLString)
+//                        .build())
+//                .field(newFieldDefinition()
+//                        .name("complete")
+//                        .type(Scalars.GraphQLBoolean)
+//                        .build())
+//                .withInterface(nodeInterface)
+//                .build();
+//    }
 
-    private void createConnectionFromUserToTodos() {
-        todosEdge = relay.edgeType("Todo", todoType, nodeInterface, Collections.<GraphQLFieldDefinition>emptyList());
-        GraphQLFieldDefinition totalCount = newFieldDefinition()
-                .name("totalCount")
-                .type(GraphQLInt)
-                .dataFetcher(environment -> {
-                    Connection connection = (Connection) environment.getSource();
-                    return connection.getEdges().size();
-                })
-                .build();
-
-        GraphQLFieldDefinition completedCount = newFieldDefinition()
-                .name("completedCount")
-                .type(GraphQLInt)
-                .dataFetcher(environment -> {
-                    Connection connection = (Connection) environment.getSource();
-                    return -1;
-//                    return (int) connection.getEdges().stream().filter(edge -> ((Todo) edge.getNode()).isComplete()).count();
-                })
-                .build();
-        connectionFromUserToTodos = relay.connectionType("Todo", todosEdge, Arrays.asList(totalCount, completedCount));
-    }
+//    private void createConnectionFromUserToTodos() {
+//        todosEdge = relay.edgeType("Todo", todoType, nodeInterface, Collections.<GraphQLFieldDefinition>emptyList());
+//        GraphQLFieldDefinition totalCount = newFieldDefinition()
+//                .name("totalCount")
+//                .type(GraphQLInt)
+//                .dataFetcher(environment -> {
+//                    Connection connection = (Connection) environment.getSource();
+//                    return connection.getEdges().size();
+//                })
+//                .build();
+//
+//        GraphQLFieldDefinition completedCount = newFieldDefinition()
+//                .name("completedCount")
+//                .type(GraphQLInt)
+//                .dataFetcher(environment -> {
+//                    Connection connection = (Connection) environment.getSource();
+//                    return -1;
+////                    return (int) connection.getEdges().stream().filter(edge -> ((Todo) edge.getNode()).isComplete()).count();
+//                })
+//                .build();
+//        connectionFromUserToTodos = relay.connectionType("Todo", todosEdge, Arrays.asList(totalCount, completedCount));
+//    }
 
     public User getTheOnlyUser() {
         return theOnlyUser;
@@ -266,10 +278,41 @@ public class MyGraphQLSchema {
                         .type(new GraphQLList(GraphQLShopTypes.createOrderType()))
                         .dataFetcher((DataFetchingEnvironment environment) -> {
                             Customer customer = environment.getSource();
-                            System.out.println("ordersize: " + customer.getOrders().size());
-                            return customer.getOrders();
+
+                            if (customer.getOrder() != null)
+                                System.out.println("ordersize: " + customer.getOrder().getId());
+                            return customer.getOrder();
                         })
                         .build())
+                .build();
+    }
+
+
+    public GraphQLObjectType createCategoryType() {
+        GraphQLController controller = this.controller;
+        return newObject()
+                .name("Category")
+                .field(newFieldDefinition()
+                        .name("id")
+                        .type(new GraphQLNonNull(GraphQLID))
+                        .build())
+                .field(newFieldDefinition()
+                        .name("name")
+                        .type(GraphQLString)
+                        .build())
+                .field(newFieldDefinition()
+                        .name("parent")
+                        .type(new GraphQLTypeReference("Category"))
+                        .build())
+                .field(newFieldDefinition()
+                        .name("products")
+                        .type(new GraphQLList(new GraphQLTypeReference("Product")))
+                        .dataFetcher((DataFetchingEnvironment environment) -> {
+                            Category category = environment.getSource();
+                            return category.getProducts();
+                        })
+                        .build())
+
                 .build();
     }
 
