@@ -23,9 +23,9 @@ public class Customer extends BaseEntity {
     @OneToOne(mappedBy = "customer")
     private Shoppingcard shoppingcard;
 
-    @OneToOne(mappedBy = "customer")
-//    private final List<Order> orders = new ArrayList<>();
-    private Order order;
+    @OneToMany(mappedBy = "customer")
+    private final List<Order> orders = new ArrayList<>();
+//    private Order order;
 
 
     public Customer() {
@@ -91,22 +91,23 @@ public class Customer extends BaseEntity {
     }
 
 
-//    public List<Order> getOrders() {
-//        System.out.println(orders.toArray().length + " elemente in getter");
-//        return orders;
+    public List<Order> getOrders() {
+        System.out.println(orders.size() + " elemente in getter");
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+//        System.out.println("in addOrder: " + order.getId());
+        orders.add(order);
+        order.setCustomer(this);
+    }
+
+//
+//    public Order getOrder() {
+//        return order;
 //    }
 //
-//    public void addOrder(Order order) {
-//        orders.add(order);
-//        order.setCustomer(this);
+//    public void setOrder(Order order) {
+//        this.order = order;
 //    }
-
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }

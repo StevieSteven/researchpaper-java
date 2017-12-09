@@ -16,7 +16,7 @@ public class Order extends BaseEntity{
     @OneToOne(fetch = FetchType.EAGER)
     private OrderStatus status;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Customer customer;
 
 

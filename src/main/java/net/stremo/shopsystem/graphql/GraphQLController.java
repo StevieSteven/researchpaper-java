@@ -55,11 +55,7 @@ public class GraphQLController {
     OrderStatusRepository orderStatusRepository;
 
 
-
-//    GraphQL graphql = new GraphQL(new MyGraphQLSchema().getSchema());
-//    GraphQLSchema graphqlB = new SchemaParserBuilder().file("main.graphqls").build().makeExecutableSchema();
-    GraphQL graphql;
-//    GraphQL graphql = GraphQL.newGraphQL(graphqlB).build();
+    private GraphQL graphql;
 
     private static final Logger log = LoggerFactory.getLogger(GraphQLController.class);
 
@@ -67,17 +63,9 @@ public class GraphQLController {
         graphql =  GraphQL.newGraphQL(new MyGraphQLSchema(this).getSchema()).build();
     }
 
-
     @RequestMapping(value = "/graphql", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Object executeOperation(@RequestBody Map body) {
-
-        System.out.println("A little Test: ");
-        System.out.println(productRepository.count() + " Produkte vorhanden");
-
-        System.out.println("Order Test: ");
-        System.out.println(orderRepository.count());
-
         String query = (String) body.get("query");
         Map<String, Object> variables = (Map<String, Object>) body.get("variables");
         ExecutionResult executionResult = graphql.execute(query, (Object) null, variables);

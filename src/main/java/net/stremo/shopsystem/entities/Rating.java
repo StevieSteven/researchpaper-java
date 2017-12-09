@@ -21,12 +21,16 @@ public class Rating extends BaseEntity {
     public Rating () {
 
     }
-
-    public Rating(int stars, String comment, Customer customer, Product product) {
+    public Rating(int stars, Customer customer, Product product) {
         this.stars = stars;
-        this.comment = comment;
         this.customer = customer;
         this.product = product;
+    }
+
+    public Rating(int stars, String comment, Customer customer, Product product) {
+        this(stars, customer, product);
+        this.comment = comment;
+
     }
 
 

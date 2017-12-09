@@ -115,7 +115,7 @@ public class TestDataSetup {
         System.out.print(step + ": Create Ratings... ");
         final int[] ratingCounter = {0};
         customerRepository.findAll().forEach(customer -> {
-            int upperBound = r.nextInt(50);
+            int upperBound = r.nextInt(20);
             for (int i = 0; i < upperBound; i++) {
                 Long id = r.nextLong();
                 if (id < 0) {
@@ -169,7 +169,7 @@ public class TestDataSetup {
         System.out.println(step + " create orders. every order has 1 to 10 products. A Customer has 0 to 20 orders in History");
 
         customerRepository.findAll().forEach(customer -> {
-            int upperBound = r.nextInt(1);
+            int upperBound = r.nextInt(10);
             for (int i = 0; i < upperBound; i++) {
                 List<Address> addressList = customer.getAddresses();
                 if (addressList.size() == 0)
@@ -178,8 +178,8 @@ public class TestDataSetup {
                 Address a = addressList.get(addressIndex);
                 Order order = new Order(a, orderStatusRepository.findOne((long) r.nextInt((int) orderStatusRepository.count() - 1) + 1), customer);
                 orderRepository.save(order);
-//                customer.addOrder(order);
-                customer.setOrder(order);
+                customer.addOrder(order);
+//                customer.setOrder(order);
                 int quantityItems = r.nextInt(10);
                 int numberOfProductsInStore = (int) productRepository.count();
                 for (int productIndex = 0; productIndex < quantityItems; productIndex++) {
