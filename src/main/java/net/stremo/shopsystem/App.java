@@ -18,7 +18,7 @@ public class App {
 
     @PostConstruct
     public void createTestData() {
-//        testDataSetup.run();
+        testDataSetup.run();
     }
 
 }
