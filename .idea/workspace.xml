@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="324c9b19-0129-4526-8789-7cd8bd424c20" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/net/stremo/shopsystem/graphql/GraphQLShopTypes.class" afterPath="$PROJECT_DIR$/out/production/classes/net/stremo/shopsystem/graphql/GraphQLShopTypes.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java" afterPath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/TestDataSetup.java" afterPath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/TestDataSetup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Category.java" afterPath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Category.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Product.java" afterPath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Product.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/GraphQLShopTypes.java" afterPath="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/GraphQLShopTypes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -35,8 +31,8 @@
           <file leaf-file-name="MyGraphQLSchema.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/MyGraphQLSchema.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3026">
-                  <caret line="193" column="0" lean-forward="true" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+                <state relative-caret-position="3128">
+                  <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -47,7 +43,7 @@
           <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Product.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
+                <state relative-caret-position="986">
                   <caret line="78" column="27" lean-forward="false" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
                   <folding>
                     <element signature="e#1624#1625#0" expanded="true" />
@@ -74,7 +70,7 @@
           <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Customer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
+                <state relative-caret-position="238">
                   <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="37" />
                   <folding />
                 </state>
@@ -85,7 +81,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Address.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="204">
-                  <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="18" selection-end-column="30" />
+                  <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="18" selection-end-column="30" />
                   <folding>
                     <element signature="e#1475#1476#0" expanded="true" />
                     <element signature="e#1515#1516#0" expanded="true" />
@@ -104,11 +100,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GraphQLShopTypes.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="GraphQLShopTypes.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/GraphQLShopTypes.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="100" column="43" lean-forward="true" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
+                <state relative-caret-position="408">
+                  <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -120,13 +116,13 @@
             <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="153">
-                  <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                  <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="255">
@@ -142,7 +138,7 @@
           <file leaf-file-name="TestDataSetup.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/TestDataSetup.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="416">
+                <state relative-caret-position="3332">
                   <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
                   <folding />
                 </state>
@@ -681,11 +677,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/MyGraphQLSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Category.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/TestDataSetup.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Product.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/GraphQLShopTypes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java" />
       </list>
     </option>
   </component>
@@ -717,7 +713,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -780,9 +775,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1013,12 +1009,13 @@
       <workItem from="1513275953000" duration="711000" />
       <workItem from="1513280057225" duration="610000" />
       <workItem from="1513356903036" duration="1293000" />
-      <workItem from="1513439739871" duration="3133000" />
+      <workItem from="1513439739871" duration="3980000" />
+      <workItem from="1513509449278" duration="1645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123859000" />
+    <option name="totallyTimeSpent" value="126351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -1040,10 +1037,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="GraphQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27385893" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3008299" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3008299" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3174274" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3164426" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18802084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1274,8 +1271,8 @@
         <state relative-caret-position="459">
           <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
           <folding>
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="false" />
+            <element signature="e#858#859#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1327,8 +1324,8 @@
         <state relative-caret-position="918">
           <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
           <folding>
-            <element signature="e#1649#1650#0" expanded="true" />
-            <element signature="e#1741#1742#0" expanded="true" />
+            <element signature="e#1649#1650#0" expanded="false" />
+            <element signature="e#1741#1742#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1344,7 +1341,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Address.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="18" selection-end-column="30" />
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="18" selection-end-column="30" />
           <folding>
             <element signature="e#1475#1476#0" expanded="true" />
             <element signature="e#1515#1516#0" expanded="true" />
@@ -1354,27 +1351,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Customer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="238">
           <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#508#509#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1389,7 +1375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/entities/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="986">
           <caret line="78" column="27" lean-forward="false" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
           <folding>
             <element signature="e#1624#1625#0" expanded="true" />
@@ -1404,7 +1390,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/TestDataSetup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="3332">
           <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
           <folding />
         </state>
@@ -1412,8 +1398,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/MyGraphQLSchema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3026">
-          <caret line="193" column="0" lean-forward="true" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+        <state relative-caret-position="3128">
+          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1422,10 +1408,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/graphql/GraphQLShopTypes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="100" column="43" lean-forward="true" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
+        <state relative-caret-position="408">
+          <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/stremo/shopsystem/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
           </folding>
         </state>
       </provider>

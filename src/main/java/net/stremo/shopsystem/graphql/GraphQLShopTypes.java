@@ -1,13 +1,23 @@
 package net.stremo.shopsystem.graphql;
 
+import graphql.language.EnumTypeDefinition;
 import graphql.schema.*;
 
 import static graphql.Scalars.*;
+import static graphql.schema.GraphQLEnumType.newEnum;
 import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLObjectType.newObject;
 
 class GraphQLShopTypes {
 
+    static GraphQLEnumType createStatusEnum() {
+        return newEnum().name("Status")
+                .value("LIEFERBAR")
+                .value("AUSVERKAUFT")
+                .build();
+
+
+    }
 
     static GraphQLObjectType createAddressType() {
         return newObject()
@@ -97,6 +107,13 @@ class GraphQLShopTypes {
                 .field(newFieldDefinition()
                         .name("category")
                         .type(new GraphQLTypeReference("Category"))
+                        .build())
+                .field(newFieldDefinition()
+                        .name("status")
+                        .type(createStatusEnum())
+                        .dataFetcher(environment -> {
+                            return "AUSVERKAUFT";
+                        })
                         .build())
                 .field(newFieldDefinition()
                         .name("ratings")
